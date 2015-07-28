@@ -10,5 +10,7 @@ package estructuras;
  * @author Raulk
  */
 public class listaNodo {
-    
+    public int numero;
+    listaNodo siguiente;
+    listaNodo anterior;
 }
