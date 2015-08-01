@@ -19,14 +19,14 @@ public class lista {
        numerado = 0;
     }
     
-    public void insertar(String nombre, String ruta, int tipo)
+    public void insertar(String nombre, int tipo)
     {
         
         if (inicial != null) {
             numerado++;
-            listaNodo nuevo = new listaNodo(numerado,nombre, ruta, tipo);
+            listaNodo nuevo = new listaNodo(numerado,nombre, tipo);
             listaNodo aux = inicial;
-            while (aux != null) {
+            while (aux.getSiguiente() != null) {
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(nuevo);
@@ -34,10 +34,12 @@ public class lista {
 
         } else {
             numerado++;
-            listaNodo nuevo = new listaNodo(numerado,nombre, ruta, tipo);
+            listaNodo nuevo = new listaNodo(numerado,nombre, tipo);
             inicial = nuevo;
         }
     }
+    
+    
     
     public listaNodo modificar(int numero)
     {
@@ -56,9 +58,12 @@ public class lista {
         listaNodo aux;
         aux = inicial;
         
-        while(aux.getSiguiente() != null)
+        while(aux != null)
         {
-            System.out.println(aux.getCorrelativo() + " -> " + aux.getSiguiente().getCorrelativo());
+            if(aux.getSiguiente() != null)  System.out.println(aux.getCorrelativo() + " -> " + aux.getSiguiente().getCorrelativo());
+            else System.out.println(aux.getCorrelativo());
+            
+            System.out.println(aux.getNombre() + "  ");
             aux = aux.getSiguiente();
         }
     }

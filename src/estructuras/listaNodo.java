@@ -10,11 +10,9 @@ package estructuras;
  * @author Raulk
  */
 public class listaNodo {
-
-    public listaNodo(int correlativo, String nombre, String ruta, int tipo) {
+     public listaNodo(int correlativo, String nombre, int tipo) {
         this.correlativo = correlativo;
         this.nombre = nombre;
-        this.ruta = ruta;
         this.tipo = tipo;
         this.siguiente = null;
         this.anterior = null;
@@ -22,7 +20,6 @@ public class listaNodo {
     
     private int correlativo;
     private String nombre;
-    private String ruta;
     private int tipo;
     private listaNodo siguiente;
     private listaNodo anterior;
@@ -39,20 +36,6 @@ public class listaNodo {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    /**
-     * @return the ruta
-     */
-    public String getRuta() {
-        return ruta;
-    }
-
-    /**
-     * @param ruta the ruta to set
-     */
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
     }
 
     /**
