@@ -5,17 +5,23 @@
  */
 package grafico;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import estructuras.matriz;
 
 /**
  *
  * @author Raulk
  */
 public class ventana extends javax.swing.JFrame {
-
+    matriz mat;
     /**
      * Creates new form ventana
      */
     public ventana() {
+        mat = new matriz();
+        mat.crear(2, 2);
+        mat.mostrar();
         initComponents();
     }
 
@@ -155,8 +161,18 @@ public class ventana extends javax.swing.JFrame {
         jLabel7.setText("siguiente objeto:");
 
         jButton4.setText("Agregar fila");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Agregar columna");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -168,6 +184,11 @@ public class ventana extends javax.swing.JFrame {
         jButton7.setText("Eliminar");
 
         jButton8.setText("Datos");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jButton1.setText("Jugar mapa");
@@ -384,6 +405,31 @@ public class ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    //se crea una nueva fila  a la matriz
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        mat.crear_fila();
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    //se crea una nueva columna a la matriz
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        mat.crear_columna();
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        mat.mostrar();
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    
+    public void dibujar_matriz(int filas, int columnas ){
+        
+        for(int i = 0; i < filas ; i++ ){
+            for(int j = 0; j < columnas ; j++){
+                
+            }
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

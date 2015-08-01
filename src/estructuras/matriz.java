@@ -12,8 +12,8 @@ package estructuras;
 public class matriz {
     
     nodoM inicial;
-    int filas;
-    int columnas;
+    public int filas;
+    public int columnas;
     
     public void crear(int fila ,int columna)// se crea una matriz de tamaño f,c vacia
     {
