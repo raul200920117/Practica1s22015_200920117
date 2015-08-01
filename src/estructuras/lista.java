@@ -11,11 +11,13 @@ package estructuras;
  */
 public class lista {
     listaNodo inicial;
+    listaNodo ultimo;
     int numerado;
     
     public void iniciar()
     {
        inicial = null;
+       ultimo = null;
        numerado = 0;
     }
     
@@ -31,15 +33,53 @@ public class lista {
             }
             aux.setSiguiente(nuevo);
             nuevo.setAnterior(aux);
+            ultimo = nuevo;
 
         } else {
             numerado++;
             listaNodo nuevo = new listaNodo(numerado,nombre, tipo);
             inicial = nuevo;
+            ultimo = nuevo;
         }
     }
     
     
+    public listaNodo sacar_pila(){
+        
+        listaNodo aux = inicial;
+
+        if (aux != null) {
+            if (aux.getSiguiente() != null) {
+                inicial = aux.getSiguiente();
+                inicial.setAnterior(null);
+                return aux;
+            } else {
+                inicial = null;
+                ultimo = null;
+                return aux;
+            }
+        } else {
+            return null;
+        }
+
+    }
+    
+    public listaNodo sacar_cola(){
+        listaNodo aux = ultimo;
+        if(aux != null){
+            if(aux.getAnterior() != null){
+                ultimo = aux.getAnterior();
+                ultimo.setSiguiente(null);
+                return aux;
+            } else {
+                ultimo = null;
+                inicial = null;
+                return aux;
+            }
+        }else{
+           return null; 
+        }
+    }
     
     public listaNodo modificar(int numero)
     {
