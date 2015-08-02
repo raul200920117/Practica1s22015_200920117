@@ -6,7 +6,6 @@
 package grafico;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import java.awt.GridLayout;
 import estructuras.matriz;
 
 /**
