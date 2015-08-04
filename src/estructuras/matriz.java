@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package estructuras;
-
 /**
  *
  * @author Raulk
@@ -231,6 +230,16 @@ public class matriz {
     
     public void eliminar_matriz(){
         inicial = null;
+    }
+    
+    public nodoM devolver_nodo(int fila, int col){
+        nodoM aux = inicial;
+  
+        while(aux.getFila() != fila)  aux = aux.getArriba();
+        
+        while(aux.getColumna() != col)  aux = aux.getDerecha();
+        
+        return aux;
     }
     
     public void graficar(){

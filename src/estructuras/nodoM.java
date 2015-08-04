@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package estructuras;
-
 /**
  *
  * @author Raulk
  */
-public class nodoM {
+public class nodoM  {
 
     public nodoM(int fila, int columna, int valor) {
         this.fila = fila;
