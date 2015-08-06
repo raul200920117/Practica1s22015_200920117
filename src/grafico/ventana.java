@@ -94,8 +94,10 @@ public class ventana extends javax.swing.JFrame {
         jLabel3.setText("Nombre del objeto: ");
 
         jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(279, 377));
 
         jPanel2.setAutoscrolls(true);
+        jPanel2.setPreferredSize(new java.awt.Dimension(277, 375));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,7 +190,7 @@ public class ventana extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
@@ -425,6 +427,7 @@ public class ventana extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        nuevoJuego.recibeDatos(mat);
         nuevoJuego.show();
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -510,8 +513,13 @@ public class ventana extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(url);
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(aux.getWidth(), aux.getHeight(), Image.SCALE_DEFAULT));
             aux.setIcon(icono);
+            String cosas = "No. " + aux.getCorrelativo()+" nombre: " + aux.getNombre();
+            JLabel nueva = new JLabel(cosas);
+            nueva.setBounds(50, y, 300, 50);
+            
             y += 60;
             jPanel2.add(aux);
+            jPanel2.add(nueva);
       
             aux = aux.getSiguiente();
         }
