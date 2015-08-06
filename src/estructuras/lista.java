@@ -10,7 +10,7 @@ package estructuras;
  * @author Raulk
  */
 public class lista {
-    listaNodo inicial;
+    public listaNodo inicial;
     listaNodo ultimo;
     int numerado;
     
@@ -21,12 +21,12 @@ public class lista {
        numerado = 0;
     }
     
-    public void insertar(String nombre, int tipo)
+    public void insertar(String nombre, int tipo, String ruta)
     {
         
         if (inicial != null) {
             numerado++;
-            listaNodo nuevo = new listaNodo(numerado,nombre, tipo);
+            listaNodo nuevo = new listaNodo(numerado,nombre, tipo, ruta);
             listaNodo aux = inicial;
             while (aux.getSiguiente() != null) {
                 aux = aux.getSiguiente();
@@ -37,7 +37,7 @@ public class lista {
 
         } else {
             numerado++;
-            listaNodo nuevo = new listaNodo(numerado,nombre, tipo);
+            listaNodo nuevo = new listaNodo(numerado,nombre, tipo, ruta);
             inicial = nuevo;
             ultimo = nuevo;
         }

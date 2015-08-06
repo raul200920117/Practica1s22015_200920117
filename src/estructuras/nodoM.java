@@ -4,18 +4,21 @@
  * and open the template in the editor.
  */
 package estructuras;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Raulk
  */
-public class nodoM  {
+public class nodoM extends JLabel {
 
-    public nodoM(int fila, int columna, int valor) {
+    public nodoM(int fila, int columna, int valor, String nombre, String ruta) {
         this.fila = fila;
         this.columna = columna;
         this.valor = valor;
         this.tipo = 0;
-        this.nombre = "vacio";
+        this.ruta =ruta;
+        this.nombre = nombre;
         this.izquierda = null;
         this.derecha = null;
         this.abajo = null;
@@ -27,6 +30,7 @@ public class nodoM  {
     private int columna;
     private int valor;// si esta cupado es 1 y si esta vacio es 0
     private int tipo;
+    private String ruta;
     private String nombre;
     private nodoM arriba;
     private nodoM abajo;
@@ -157,5 +161,19 @@ public class nodoM  {
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the ruta
+     */
+    public String getRuta() {
+        return ruta;
+    }
+
+    /**
+     * @param ruta the ruta to set
+     */
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 }

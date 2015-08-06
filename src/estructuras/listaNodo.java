@@ -5,15 +5,18 @@
  */
 package estructuras;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Raulk
  */
-public class listaNodo {
-     public listaNodo(int correlativo, String nombre, int tipo) {
+public class listaNodo extends JLabel {
+     public listaNodo(int correlativo, String nombre, int tipo , String ruta) {
         this.correlativo = correlativo;
         this.nombre = nombre;
         this.tipo = tipo;
+        this.ruta = ruta;
         this.siguiente = null;
         this.anterior = null;
     }
@@ -21,6 +24,7 @@ public class listaNodo {
     private int correlativo;
     private String nombre;
     private int tipo;
+    private String ruta;
     private listaNodo siguiente;
     private listaNodo anterior;
 
@@ -92,6 +96,20 @@ public class listaNodo {
      */
     public void setCorrelativo(int correlativo) {
         this.correlativo = correlativo;
+    }
+
+    /**
+     * @return the ruta
+     */
+    public String getRuta() {
+        return ruta;
+    }
+
+    /**
+     * @param ruta the ruta to set
+     */
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
 }

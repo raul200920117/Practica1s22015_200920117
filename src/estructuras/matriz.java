@@ -10,7 +10,7 @@ package estructuras;
  */
 public class matriz {
     
-    nodoM inicial;
+    public nodoM inicial;
     public int filas;
     public int columnas;
     
@@ -19,7 +19,7 @@ public class matriz {
         filas = fila;
         columnas = columna;
         int i = 0, j;
-        inicial= new nodoM(0,0,0);
+        inicial= new nodoM(0,0,0,"","/imagenes/fondo.png");
                 
         nodoM aux;
         nodoM aux2;
@@ -32,7 +32,7 @@ public class matriz {
             j = 1;
             if(i != 0)
             {
-                nodoM nuevo = new nodoM(i, 0, 0);
+                nodoM nuevo = new nodoM(i, 0, 0,"","/imagenes/fondo.png");
                 aux.setArriba(nuevo);
                 nuevo.setAbajo(aux);
                 aux = nuevo;
@@ -41,7 +41,7 @@ public class matriz {
             
             while(j < columna)//se inician las columnas
             {
-                nodoM nuevo1 = new nodoM(i,j,0);
+                nodoM nuevo1 = new nodoM(i,j,0,"","/imagenes/fondo.png");
                 aux2.setDerecha(nuevo1);
                 nuevo1.setIzquierda(aux2);
                 aux2 = nuevo1;
@@ -86,7 +86,7 @@ public class matriz {
         act = aux.getFila() +1; 
         
         //se crea el primer nodo
-        nodoM nuevo = new nodoM(act,0,0);
+        nodoM nuevo = new nodoM(act,0,0,"","/imagenes/fondo.png");
         aux.setArriba(nuevo);
         nuevo.setAbajo(aux);
         aux = nuevo;
@@ -94,7 +94,7 @@ public class matriz {
         //se crea el resto de nodos con sus apuntadores derecha e izquierda
         while(i < columnas)
         {
-            nodoM agregar = new nodoM(act, i, 0);
+            nodoM agregar = new nodoM(act, i, 0,"","/imagenes/fondo.png");
             aux.setDerecha(agregar);
             agregar.setIzquierda(aux);
             aux = aux.getDerecha();
@@ -123,14 +123,14 @@ public class matriz {
         int act;
         act = aux.getColumna() + 1;
         
-        nodoM ult = new nodoM(0,act,0);
+        nodoM ult = new nodoM(0,act,0,"","/imagenes/fondo.png");
         aux.setDerecha(ult);
         ult.setIzquierda(aux);
         int i=1;
         aux = aux.getArriba();//se busca el nodo de arriba para recorrer hacia arriba
         
         while(aux != null){
-            nodoM nuevo = new nodoM(i,act,0);
+            nodoM nuevo = new nodoM(i,act,0,"","/imagenes/fondo.png");
             aux.setDerecha(nuevo);
             nuevo.setIzquierda(aux);
             nuevo.setAbajo(ult);

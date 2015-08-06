@@ -5,8 +5,12 @@
  */
 package grafico;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import estructuras.matriz;
+import javax.swing.*;
+import estructuras.*;
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -14,11 +18,21 @@ import estructuras.matriz;
  */
 public class ventana extends javax.swing.JFrame {
     matriz mat;
+    lista list;
+    juego nuevoJuego;
+    String[] rutas = {"/imagenes/suelo.png","/imagenes/pared.png","/imagenes/goomba.gif","/imagenes/koopa.gif",
+                    "/imagenes/ficha.gif", "/imagenes/hongo.jpg", "/imagenes/mario.gif", "/imagenes/castillo.png"};
+    boolean mario;
+    boolean castillo;
     /**
      * Creates new form ventana
      */
     public ventana() {
+        mario = false;
+        castillo = false;
         mat = new matriz();
+        list = new lista();
+        nuevoJuego = new juego();
         mat.crear(2, 2);
         mat.mostrar();
         initComponents();
@@ -41,6 +55,7 @@ public class ventana extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -49,6 +64,7 @@ public class ventana extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -57,16 +73,6 @@ public class ventana extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Practica1 Mario Maker");
@@ -87,8 +93,30 @@ public class ventana extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre del objeto: ");
 
+        jScrollPane1.setAutoscrolls(true);
+
+        jPanel2.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 376, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Agregar objeto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 255, 102));
@@ -97,9 +125,20 @@ public class ventana extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         jLabel4.setAutoscrolls(true);
 
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("Usar como pila");
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton1MouseClicked(evt);
+            }
+        });
 
         jRadioButton2.setText("Usar como cola");
+        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton2MouseClicked(evt);
+            }
+        });
 
         jButton13.setText("Pasar a Editar Mapa");
 
@@ -131,11 +170,11 @@ public class ventana extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addGap(136, 136, 136))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton1))
-                        .addGap(80, 80, 80)
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2))
+                        .addGap(78, 78, 78)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +205,7 @@ public class ventana extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jRadioButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jRadioButton2)
@@ -181,6 +220,23 @@ public class ventana extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Objetos", jPanel1);
         jPanel1.getAccessibleContext().setAccessibleName("");
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 586, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 361, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(jPanel3);
 
         jButton3.setText("jButton3");
 
@@ -218,6 +274,11 @@ public class ventana extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jButton1.setText("Jugar mapa");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -272,98 +333,12 @@ public class ventana extends javax.swing.JFrame {
                                             .addComponent(jButton8))
                                         .addComponent(jLabel7)))))
                         .addGap(18, 18, 18)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Modificar matriz de juego", jPanel4);
         jPanel4.getAccessibleContext().setAccessibleName("");
-
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
-        );
-
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pausa.png"))); // NOI18N
-
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/play.png"))); // NOI18N
-
-        jButton11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 0, 0));
-        jButton11.setText("Graficar");
-
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reinicio.png"))); // NOI18N
-
-        jLabel8.setText("Puntos:");
-
-        jLabel9.setText("0");
-
-        jLabel10.setText("Vidas: ");
-
-        jLabel11.setText("0");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jButton11)
-                .addGap(68, 68, 68)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Juego en curso", jPanel5);
-        jPanel5.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -434,12 +409,13 @@ public class ventana extends javax.swing.JFrame {
     //se crea una nueva fila  a la matriz
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         mat.crear_fila();
-       
+        dibujar_matriz();
     }//GEN-LAST:event_jButton4MouseClicked
 
     //se crea una nueva columna a la matriz
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         mat.crear_columna();
+        dibujar_matriz();
     }//GEN-LAST:event_jButton5MouseClicked
 
     
@@ -447,16 +423,100 @@ public class ventana extends javax.swing.JFrame {
         mat.mostrar();
     }//GEN-LAST:event_jButton8MouseClicked
 
-    
-    public void dibujar_matriz(int filas, int columnas ){
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        nuevoJuego.show();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    //este es el metodo que añade objetos a la lista pila cola
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        for(int i = 0; i < filas ; i++ ){
-            for(int j = 0; j < columnas ; j++){
-                
-            }
+        int i = jComboBox1.getSelectedIndex();
+        String str = jTextField1.getText();
+        
+        if(mario == true && i == 6){
+            JOptionPane.showMessageDialog(null, "Ya se ha agregado un personaje \n principal a la lista de objetos",
+"personaje repetido", JOptionPane.INFORMATION_MESSAGE);
+        }else if(castillo == true && i == 7){
+            JOptionPane.showMessageDialog(null, "Ya se ha agregado un castillo \n final a la lista de objetos",
+"Título del Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            list.insertar(str , i , rutas[i]);
+            list.mostrar();
+            
+            if(i == 7 ) castillo = true;
+            
+            if(i == 6 ) mario = true;
         }
+        enlistar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
+        // TODO add your handling code here:
+        jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jRadioButton1MouseClicked
+
+    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
+        // TODO add your handling code here:
+        jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_jRadioButton2MouseClicked
+
+    
+    public void dibujar_matriz(){
+        nodoM aux1,aux2;
+        aux1 = mat.inicial;
+        aux2 = mat.inicial;
+        int x, y;
+        x=0; y =0;
+        Border border = LineBorder.createGrayLineBorder();
+        
+        while(aux2.getArriba() != null)  aux2 = aux2.getArriba();
+        
+        while(aux2 != null){
+            while(aux1 != null){               
+                aux1.setBounds(x, y, 30, 30);
+                aux1.setBorder(border);
+                String path = aux1.getRuta();
+                URL url = this.getClass().getResource(path);
+                ImageIcon icon = new ImageIcon(url);
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(aux1.getWidth(), aux1.getHeight(), Image.SCALE_DEFAULT));
+                aux1.setIcon(icono);
+                jPanel3.add(aux1);
+                x += 30;
+                aux1 = aux1.getDerecha();
+            }
+            x = 0;
+            y += 30;
+            aux2 = aux2.getAbajo();
+            aux1 = aux2;
+        }
+        jPanel3.repaint();
     }
     
+    public void enlistar(){
+        listaNodo aux;
+        aux = list.inicial;
+        int x,y;
+        x=0;y=0;
+        Border border = LineBorder.createGrayLineBorder();
+        while(aux != null)
+        {
+            
+            aux.setBounds(x, y, 50, 50);
+            
+            aux.setBorder(border);
+            String path = aux.getRuta();
+            URL url = this.getClass().getResource(path);
+            ImageIcon icon = new ImageIcon(url);
+            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(aux.getWidth(), aux.getHeight(), Image.SCALE_DEFAULT));
+            aux.setIcon(icono);
+            y += 60;
+            jPanel2.add(aux);
+      
+            aux = aux.getSiguiente();
+        }
+        jPanel2.repaint();
+    }
     /**
      * @param args the command line arguments
      */
@@ -494,9 +554,6 @@ public class ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -505,22 +562,17 @@ public class ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
