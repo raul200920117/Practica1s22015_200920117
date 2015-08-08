@@ -11,7 +11,7 @@ package estructuras;
  */
 public class lista {
     public listaNodo inicial;
-    listaNodo ultimo;
+    public listaNodo ultimo;
     int numerado;
     
     public void iniciar()
@@ -44,7 +44,7 @@ public class lista {
     }
     
     
-    public listaNodo sacar_pila(){
+    public listaNodo sacar_cola(){
         
         listaNodo aux = inicial;
 
@@ -61,10 +61,9 @@ public class lista {
         } else {
             return null;
         }
-
     }
     
-    public listaNodo sacar_cola(){
+    public listaNodo sacar_pila(){
         listaNodo aux = ultimo;
         if(aux != null){
             if(aux.getAnterior() != null){
