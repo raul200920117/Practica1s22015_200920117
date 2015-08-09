@@ -13,6 +13,8 @@ public class matriz {
     public nodoM inicial;
     public int filas;
     public int columnas;
+    public nodoM personaje;
+    public nodoM castillo;
     
     public void crear(int fila ,int columna)// se crea una matriz de tamaño f,c vacia
     {

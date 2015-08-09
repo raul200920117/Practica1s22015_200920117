@@ -142,6 +142,8 @@ public class ventana extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setFont(new java.awt.Font("Tempus Sans ITC", 0, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(0, 153, 0));
         jButton13.setText("Pasar a Editar Mapa");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,11 +177,6 @@ public class ventana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -188,32 +185,40 @@ public class ventana extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton12)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(48, 48, 48))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton11)
-                                .addGap(68, 68, 68)))))
-                .addGap(25, 25, 25))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton1)
+                                            .addComponent(jRadioButton2)
+                                            .addComponent(jButton11))
+                                        .addGap(105, 105, 105))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(75, 75, 75))))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,12 +245,7 @@ public class ventana extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton2)
                                     .addComponent(jButton12))
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(81, 81, 81))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane1)))
@@ -255,7 +255,13 @@ public class ventana extends javax.swing.JFrame {
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(jButton11)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton2)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))))
         );
 
         jTabbedPane1.addTab("Agregar Objetos", jPanel1);
@@ -348,6 +354,11 @@ public class ventana extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 0, 0));
         jButton9.setText("Quitar Objeto");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         jLabel10.setText("Borrar fila:");
 
@@ -511,60 +522,11 @@ public class ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        // TODO add your handling code here:
-        int i = jComboBox1.getSelectedIndex();
-        switch(i){
-            case 0:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/suelo.png")));
-                jTextField1.setText("suelo");
-                break;
-            case 1:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/pared.png")));
-                jTextField1.setText("pared");
-                break;
-            case 2:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/goomba.gif")));
-                jTextField1.setText("enemigo goomba");
-                break;
-            case 3:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/koopa.gif")));
-                jTextField1.setText("enemigo koopa");
-                break;
-            case 4:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/ficha.gif")));
-                jTextField1.setText("ficha");
-                break;
-            case 5:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/hongo.jpg")));
-                jTextField1.setText("hongo de vida");
-                break;
-            case 6:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/mario.gif")));
-                jTextField1.setText("personaje");
-                break;
-            case 7:
-                jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/castillo.png")));
-                jTextField1.setText("castillo final");
-                break;
-        }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
-
     //se crea una nueva fila  a la matriz
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         mat.crear_fila();
         dibujar_matriz();
     }//GEN-LAST:event_jButton4MouseClicked
-
-    //se crea una nueva columna a la matriz
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        mat.crear_columna();
-        dibujar_matriz();
-    }//GEN-LAST:event_jButton5MouseClicked
 
     
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
@@ -580,117 +542,9 @@ public class ventana extends javax.swing.JFrame {
         nuevoJuego.show();
     }//GEN-LAST:event_jButton1MouseClicked
 
-    //este es el metodo que añade objetos a la lista pila cola
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        int i = jComboBox1.getSelectedIndex();
-        String str = jTextField1.getText();
-        
-        if(mario == true && i == 6){
-            JOptionPane.showMessageDialog(null, "Ya se ha agregado un personaje \n principal a la lista de objetos",
-"personaje repetido", JOptionPane.INFORMATION_MESSAGE);
-        }else if(castillo == true && i == 7){
-            JOptionPane.showMessageDialog(null, "Ya se ha agregado un castillo \n final a la lista de objetos",
-"Título del Mensaje", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            list.insertar(str , i , rutas[i]);
-            list.mostrar();
-            
-            if(i == 7 ) castillo = true;
-            
-            if(i == 6 ) mario = true;
-        }
-        enlistar();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
-        // TODO add your handling code here:
-        if(jRadioButton1.isSelected())  jRadioButton2.setSelected(false);
-    }//GEN-LAST:event_jRadioButton1MouseClicked
-
-    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
-        // TODO add your handling code here:
-        if(jRadioButton2.isSelected())  jRadioButton1.setSelected(false);
-    }//GEN-LAST:event_jRadioButton2MouseClicked
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
-        //para cuando se va a editar un elemento
-        String i = jComboBox4.getSelectedItem().toString();
-        int num = Integer.parseInt(i);
-        listaNodo aux = list.modificar(num);
-        
-        jTextField1.setText(aux.getNombre());
-        jComboBox1.setSelectedIndex(aux.getTipo());
-        
-        jLabel4.setIcon(new ImageIcon(getClass().getResource(aux.getRuta())));
-                   
-        if(jComboBox1.getSelectedIndex() == 7 ) castillo = false;
-            
-        if(jComboBox1.getSelectedIndex() == 6 ) mario = false;
-        
-        jButton12.setEnabled(true);
-        jButton2.setEnabled(false);
-    }//GEN-LAST:event_jButton11MouseClicked
-
-    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        // cuando se modifica un objeto y se le da click para que guarde los cambios
-        String i = jComboBox4.getSelectedItem().toString();
-        int num = Integer.parseInt(i);
-        listaNodo aux = list.modificar(num);
-        
-        
-        aux.setNombre(jTextField1.getText());
-        aux.setTipo(jComboBox1.getSelectedIndex());
-        aux.setRuta( rutas[jComboBox1.getSelectedIndex()] );
-        
-        
-        if(jComboBox1.getSelectedIndex() == 7 ) castillo = true;
-            
-        if(jComboBox1.getSelectedIndex() == 6 ) mario = true;
-        
-        
-        jButton12.setEnabled(false);
-        jButton2.setEnabled(true);
-        
-        
-        enlistar();        
-    }//GEN-LAST:event_jButton12MouseClicked
-
-    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
-        // aca se pasa a editar  la matriz de juego
-//        jTabbedPane1.setEnabled(true);
-        
-        if(jRadioButton1.isSelected()){//se usa como pila
-            tipo_acceso = 0;
-        }else if(jRadioButton2.isSelected()){ // se usa como cola
-            tipo_acceso = 1;
-        }else{//si la cago en los botones XD
-            JOptionPane.showMessageDialog(null, "Solo hay que seleccionar un tipo de acceso",
-                                                "Seleccion de acceso", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        if(tipo_acceso == 1){//se usa como cola
-            String path = list.inicial.getRuta();
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
-            jButton3.setIcon(icono);
-        }else{//se usa como pila
-            String path = list.ultimo.getRuta();
-            URL url = this.getClass().getResource(path);
-            ImageIcon icon = new ImageIcon(url);
-            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
-            jButton3.setIcon(icono);
-        }
-            
-        dibujar_matriz();   
-        jTabbedPane1.setSelectedIndex(1);
-        
-    }//GEN-LAST:event_jButton13MouseClicked
 
     //aca se ponen los personajes en la matriz 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -722,6 +576,216 @@ public class ventana extends javax.swing.JFrame {
         dibujar_matriz();
     }//GEN-LAST:event_jButton10MouseClicked
 
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // cuando se modifica un objeto y se le da click para que guarde los cambios
+        String i = jComboBox4.getSelectedItem().toString();
+        int num = Integer.parseInt(i);
+        listaNodo aux = list.modificar(num);
+
+        aux.setNombre(jTextField1.getText());
+        aux.setTipo(jComboBox1.getSelectedIndex());
+        aux.setRuta( rutas[jComboBox1.getSelectedIndex()] );
+
+        if(jComboBox1.getSelectedIndex() == 7 ) castillo = true;
+
+        if(jComboBox1.getSelectedIndex() == 6 ) mario = true;
+
+        jButton12.setEnabled(false);
+        jButton2.setEnabled(true);
+
+        enlistar();
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        //para cuando se va a editar un elemento
+        String i = jComboBox4.getSelectedItem().toString();
+        int num = Integer.parseInt(i);
+        listaNodo aux = list.modificar(num);
+
+        jTextField1.setText(aux.getNombre());
+        jComboBox1.setSelectedIndex(aux.getTipo());
+
+        jLabel4.setIcon(new ImageIcon(getClass().getResource(aux.getRuta())));
+
+        if(jComboBox1.getSelectedIndex() == 7 ) castillo = false;
+
+        if(jComboBox1.getSelectedIndex() == 6 ) mario = false;
+
+        jButton12.setEnabled(true);
+        jButton2.setEnabled(false);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        // aca se pasa a editar  la matriz de juego
+        //        jTabbedPane1.setEnabled(true);
+
+        if(mario == true  && castillo == true){
+            if (jRadioButton1.isSelected()) {//se usa como pila
+                tipo_acceso = 0;
+            } else if (jRadioButton2.isSelected()) { // se usa como cola
+                tipo_acceso = 1;
+            } else {//si la cago en los botones XD
+                JOptionPane.showMessageDialog(null, "Solo hay que seleccionar un tipo de acceso",
+                    "Seleccion de acceso", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            if (tipo_acceso == 1) {//se usa como cola
+                String path = list.inicial.getRuta();
+                URL url = this.getClass().getResource(path);
+                ImageIcon icon = new ImageIcon(url);
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
+                jButton3.setIcon(icono);
+            } else {//se usa como pila
+                String path = list.ultimo.getRuta();
+                URL url = this.getClass().getResource(path);
+                ImageIcon icon = new ImageIcon(url);
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
+                jButton3.setIcon(icono);
+            }
+
+            dibujar_matriz();
+            jTabbedPane1.setSelectedIndex(1);
+        }else{
+            JOptionPane.showMessageDialog(null, "por favor ingrese un castillo \n y un personaje para avanzar",
+                "Completar", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
+        // TODO add your handling code here:
+        if(jRadioButton2.isSelected())  jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_jRadioButton2MouseClicked
+
+    private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
+        // TODO add your handling code here:
+        if(jRadioButton1.isSelected())  jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jRadioButton1MouseClicked
+
+    //este es el metodo que añade objetos a la lista pila cola
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        int i = jComboBox1.getSelectedIndex();
+        String str = jTextField1.getText();
+
+        if(mario == true && i == 6){
+            JOptionPane.showMessageDialog(null, "Ya se ha agregado un personaje \n principal a la lista de objetos",
+                "personaje repetido", JOptionPane.INFORMATION_MESSAGE);
+        }else if(castillo == true && i == 7){
+            JOptionPane.showMessageDialog(null, "Ya se ha agregado un castillo \n final a la lista de objetos",
+                "Título del Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            list.insertar(str , i , rutas[i]);
+            list.mostrar();
+
+            if(i == 7 ) castillo = true;
+
+            if(i == 6 ) mario = true;
+        }
+        enlistar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        int i = jComboBox1.getSelectedIndex();
+        switch(i){
+            case 0:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/suelo.png")));
+            jTextField1.setText("suelo");
+            break;
+            case 1:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/pared.png")));
+            jTextField1.setText("pared");
+            break;
+            case 2:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/goomba.gif")));
+            jTextField1.setText("enemigo goomba");
+            break;
+            case 3:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/koopa.gif")));
+            jTextField1.setText("enemigo koopa");
+            break;
+            case 4:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/ficha.gif")));
+            jTextField1.setText("ficha");
+            break;
+            case 5:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/hongo.jpg")));
+            jTextField1.setText("hongo de vida");
+            break;
+            case 6:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/mario.gif")));
+            jTextField1.setText("personaje");
+            break;
+            case 7:
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/imagenes/castillo.png")));
+            jTextField1.setText("castillo final");
+            break;
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    //para quitar un elemento de un label del panel
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        
+        String i = jComboBox2.getSelectedItem().toString();
+        int y = Integer.parseInt(i);
+        
+        String j = jComboBox3.getSelectedItem().toString();
+        int x = Integer.parseInt(j);
+        
+        nodoM aux = mat.devolver_nodo(y, x);
+        
+        
+        JOptionPane.showMessageDialog(null, "y: " + aux.getFila() + " x: " + aux.getColumna() + " valor:" +aux.getValor() ,
+                        "Vacio", JOptionPane.INFORMATION_MESSAGE);
+        
+        if(aux.getValor() == 1){
+            
+            if (list != null) list.insertar(aux.getNombre(), aux.getTipo(), aux.getRuta());
+            else{
+                list = new lista();
+                list.insertar(aux.getNombre(), aux.getTipo(), aux.getRuta());
+                jButton3.setEnabled(true);
+            }
+            
+            aux.setValor(0);
+            aux.setNombre("");
+            aux.setRuta("/imagenes/fondo.png");
+            aux.setTipo(0);
+            
+            if (tipo_acceso == 1) {//se usa como cola
+                String path = list.inicial.getRuta();
+                URL url = this.getClass().getResource(path);
+                ImageIcon icon = new ImageIcon(url);
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
+                jButton3.setIcon(icono);
+            } else {//se usa como pila
+                String path = list.ultimo.getRuta();
+                URL url = this.getClass().getResource(path);
+                ImageIcon icon = new ImageIcon(url);
+                Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jButton3.getWidth(), jButton3.getHeight(), Image.SCALE_DEFAULT));
+                jButton3.setIcon(icono);
+            }
+
+            dibujar_matriz();
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "El nodo seleccionado no tiene nada asignado",
+                        "Vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    //se crea una nueva columna a la matriz
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        mat.crear_columna();
+        dibujar_matriz();
+    }//GEN-LAST:event_jButton5MouseClicked
+
     public void sacaCola(){
         
         String fila = jComboBox2.getSelectedItem().toString();
@@ -750,6 +814,10 @@ public class ventana extends javax.swing.JFrame {
             aux2.setTipo(aux.getTipo());
             aux2.setRuta(aux.getRuta());  
             aux2.setValor(1);
+            
+            if(aux2.getTipo() == 6) mat.personaje = aux2;
+            
+            if(aux2.getTipo() == 7) mat.castillo = aux2;
             
             if (list != null) {
                 String path = list.inicial.getRuta();
@@ -797,6 +865,10 @@ public class ventana extends javax.swing.JFrame {
             aux2.setTipo(aux.getTipo());
             aux2.setRuta(aux.getRuta());  
             aux2.setValor(1);
+            
+            if(aux2.getTipo() == 6) mat.personaje = aux2;
+            
+            if(aux2.getTipo() == 7) mat.castillo = aux2;
             
             if (list != null) {
                 String path = list.ultimo.getRuta();
@@ -917,26 +989,12 @@ public class ventana extends javax.swing.JFrame {
             jComboBox4.removeItemAt(0);
         }
         
-//        int x,y;
-//        x=0;y=0;
-//        Border border = LineBorder.createGrayLineBorder();
-        
-        
+
         while(aux != null)
         {
             
-//            aux.setBounds(x, y, 15, 15);
-            
-//            aux.setBorder(border);
-//            String path = aux.getRuta();
-//            URL url = this.getClass().getResource(path);
-//            ImageIcon icon = new ImageIcon(url);
-//            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(aux.getWidth(), aux.getHeight(), Image.SCALE_DEFAULT));
-//            aux.setIcon(icono);
             String cosas = "No. " + aux.getCorrelativo()+" nombre: " + aux.getNombre();
-//            JLabel nueva = new JLabel(cosas);
-//            nueva.setBounds(17, y, 300, 15);
-//            y += 17;
+
             jComboBox4.addItem(aux.getCorrelativo());
             jTextPane1.setCaretPosition(jTextPane1.getStyledDocument().getLength());
             jTextPane1.setText(jTextPane1.getText() + cosas + " \n");
