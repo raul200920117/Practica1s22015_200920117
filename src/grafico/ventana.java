@@ -21,6 +21,7 @@ public class ventana extends javax.swing.JFrame {
     lista list;
     juego nuevoJuego;
     datos dat;
+    Graficas graf;
     String[] rutas = {"/imagenes/suelo.png","/imagenes/pared.png","/imagenes/goomba.gif","/imagenes/koopa.gif",
                     "/imagenes/ficha.gif", "/imagenes/hongo.jpg", "/imagenes/mario.gif", "/imagenes/castillo.png"};
     boolean mario;
@@ -35,9 +36,9 @@ public class ventana extends javax.swing.JFrame {
         castillo = false;
         mat = new matriz();
         list = new lista();
+        graf = new Graficas();
         nuevoJuego = new juego();
         mat.crear(2, 4);
-        mat.mostrar();
         initComponents();
     }
 
@@ -68,6 +69,7 @@ public class ventana extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -155,6 +157,8 @@ public class ventana extends javax.swing.JFrame {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton11.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(0, 204, 0));
         jButton11.setText("Editar Elemento");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -169,6 +173,10 @@ public class ventana extends javax.swing.JFrame {
                 jButton12MouseClicked(evt);
             }
         });
+
+        jButton14.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 0, 0));
+        jButton14.setText("Eliminar ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,7 +202,7 @@ public class ventana extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -203,22 +211,28 @@ public class ventana extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jRadioButton1)
-                                            .addComponent(jRadioButton2)
-                                            .addComponent(jButton11))
-                                        .addGap(105, 105, 105))
+                                            .addComponent(jRadioButton2))
+                                        .addGap(115, 115, 115))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(75, 75, 75))))))))
+                                        .addGap(75, 75, 75))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton14)
+                                        .addGap(52, 52, 52))))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,8 +267,10 @@ public class ventana extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton11)
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton11)
+                            .addComponent(jButton14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jRadioButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -321,6 +337,11 @@ public class ventana extends javax.swing.JFrame {
         });
 
         jButton6.setText("Graficar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         jButton8.setText("Datos");
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -676,7 +697,6 @@ public class ventana extends javax.swing.JFrame {
                 "Título del Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }else{
             list.insertar(str , i , rutas[i]);
-            list.mostrar();
 
             if(i == 7 ) castillo = true;
 
@@ -726,6 +746,8 @@ public class ventana extends javax.swing.JFrame {
 
     //para quitar un elemento de un label del panel
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        
+        mat.graficar();
         
         String i = jComboBox2.getSelectedItem().toString();
         int y = Integer.parseInt(i);
@@ -785,6 +807,12 @@ public class ventana extends javax.swing.JFrame {
         mat.crear_columna();
         dibujar_matriz();
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        graf.regraficar();
+        graf.show();
+    }//GEN-LAST:event_jButton6MouseClicked
 
     public void sacaCola(){
         
@@ -1043,6 +1071,7 @@ public class ventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

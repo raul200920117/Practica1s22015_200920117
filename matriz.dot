@@ -1,0 +1,40 @@
+digraph g { 
+rankdir=LR; 
+subgraph cluster1{ 
+nod10 [shape=record , label= " { nombre : vacio |  posicion: 1,0 } | { tipo: 0 | estado : 0 }  "] ; 
+nod11 [shape=record , label= " { nombre : vacio |  posicion: 1,1 } | { tipo: 0 | estado : 0 }  "] ; 
+nod12 [shape=record , label= " { nombre : vacio |  posicion: 1,2 } | { tipo: 0 | estado : 0 }  "] ; 
+nod13 [shape=record , label= " { nombre : vacio |  posicion: 1,3 } | { tipo: 0 | estado : 0 }  "] ; 
+} 
+subgraph cluster2{ 
+nod00 [shape=record , label= " { nombre : vacio |  posicion: 0,0 } | { tipo: 0 | estado : 0 }  "] ; 
+nod01 [shape=record , label= " { nombre : vacio |  posicion: 0,1 } | { tipo: 0 | estado : 0 }  "] ; 
+nod02 [shape=record , label= " { nombre : vacio |  posicion: 0,2 } | { tipo: 0 | estado : 0 }  "] ; 
+nod03 [shape=record , label= " { nombre : vacio |  posicion: 0,3 } | { tipo: 0 | estado : 0 }  "] ; 
+} 
+
+nod10 -> nod11;
+nod11 -> nod12;
+nod12 -> nod13;
+nod00 -> nod01;
+nod01 -> nod02;
+nod02 -> nod03;
+
+nod11 -> nod10 ;
+nod12 -> nod11 ;
+nod13 -> nod12 ;
+nod01 -> nod00 ;
+nod02 -> nod01 ;
+nod03 -> nod02 ;
+
+nod00 -> nod10 [dir = both] ; 
+nod01 -> nod11 [dir = both] ; 
+nod02 -> nod12 [dir = both] ; 
+nod03 -> nod13 [dir = both] ; 
+
+nod10 -> nod00 ;
+nod11 -> nod01 ;
+nod12 -> nod02 ;
+nod13 -> nod03 ;
+
+} 

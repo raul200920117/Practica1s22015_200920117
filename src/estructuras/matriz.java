@@ -8,6 +8,8 @@ package estructuras;
  *
  * @author Raulk
  */
+
+import java.io.*;
 public class matriz {
     
     public nodoM inicial;
@@ -21,7 +23,7 @@ public class matriz {
         filas = fila;
         columnas = columna;
         int i = 0, j;
-        inicial= new nodoM(0,0,0,"","/imagenes/fondo.png");
+        inicial= new nodoM(0,0,0,"vacio","/imagenes/fondo.png");
                 
         nodoM aux;
         nodoM aux2;
@@ -34,7 +36,7 @@ public class matriz {
             j = 1;
             if(i != 0)
             {
-                nodoM nuevo = new nodoM(i, 0, 0,"","/imagenes/fondo.png");
+                nodoM nuevo = new nodoM(i, 0, 0,"vacio","/imagenes/fondo.png");
                 aux.setArriba(nuevo);
                 nuevo.setAbajo(aux);
                 aux = nuevo;
@@ -43,7 +45,7 @@ public class matriz {
             
             while(j < columna)//se inician las columnas
             {
-                nodoM nuevo1 = new nodoM(i,j,0,"","/imagenes/fondo.png");
+                nodoM nuevo1 = new nodoM(i,j,0,"vacio","/imagenes/fondo.png");
                 aux2.setDerecha(nuevo1);
                 nuevo1.setIzquierda(aux2);
                 aux2 = nuevo1;
@@ -88,7 +90,7 @@ public class matriz {
         act = aux.getFila() +1; 
         
         //se crea el primer nodo
-        nodoM nuevo = new nodoM(act,0,0,"","/imagenes/fondo.png");
+        nodoM nuevo = new nodoM(act,0,0,"vacio","/imagenes/fondo.png");
         aux.setArriba(nuevo);
         nuevo.setAbajo(aux);
         aux = nuevo;
@@ -96,7 +98,7 @@ public class matriz {
         //se crea el resto de nodos con sus apuntadores derecha e izquierda
         while(i < columnas)
         {
-            nodoM agregar = new nodoM(act, i, 0,"","/imagenes/fondo.png");
+            nodoM agregar = new nodoM(act, i, 0,"vacio","/imagenes/fondo.png");
             aux.setDerecha(agregar);
             agregar.setIzquierda(aux);
             aux = aux.getDerecha();
@@ -125,14 +127,14 @@ public class matriz {
         int act;
         act = aux.getColumna() + 1;
         
-        nodoM ult = new nodoM(0,act,0,"","/imagenes/fondo.png");
+        nodoM ult = new nodoM(0,act,0,"vacio","/imagenes/fondo.png");
         aux.setDerecha(ult);
         ult.setIzquierda(aux);
         int i=1;
         aux = aux.getArriba();//se busca el nodo de arriba para recorrer hacia arriba
         
         while(aux != null){
-            nodoM nuevo = new nodoM(i,act,0,"","/imagenes/fondo.png");
+            nodoM nuevo = new nodoM(i,act,0,"vacio","/imagenes/fondo.png");
             aux.setDerecha(nuevo);
             nuevo.setIzquierda(aux);
             nuevo.setAbajo(ult);
@@ -245,8 +247,120 @@ public class matriz {
     }
     
     public void graficar(){
+         
         //aqui debo poner la de graphviz
         //terminar esto mañana XD
         
+        nodoM aux = inicial;//para recorrer filas
+        nodoM aux2;//para recorrer columnas
+        String der = "";
+        String izq = "";
+        String arr = "";
+        String aba = "";
+        String rel = "";
+       
+        //n%d[shape=record , label="{ id_usuario: %d | id_operacion: %d | llave: %d }"]; 
+        while(aux.getArriba() != null)  aux = aux.getArriba();
+        
+        aux2 = aux;
+        
+        while (aux != null) { //se recorren las filas
+            rel += "subgraph cluster" + (filas - aux2.getFila()) + "{ \n" ;
+            while (aux2 !=null)//se recorren las columnas
+            {
+                
+                rel += "nod" + aux2.getFila()+ "" + aux2.getColumna() + " [shape=record , label= \" { nombre : " + aux2.getNombre() +
+                         " |  posicion: " + "" +aux2.getFila()+ "," +  aux2.getColumna()  + " } | { tipo: " + aux2.getTipo()+ " | estado : " + aux2.getValor() + " }  \"] ; \n" ;             
+               
+                if(aux2.getDerecha() != null){
+                    der += "nod" +aux2.getFila()+ "" +  aux2.getColumna() + " -> nod" + aux2.getDerecha().getFila() +
+                            aux2.getDerecha().getColumna() + ";\n" ;
+                }
+                
+                if(aux2.getIzquierda() != null){
+                    izq += "nod" +aux2.getFila()+ "" +  aux2.getColumna() +  " -> nod" + aux2.getIzquierda().getFila() +
+                            aux2.getIzquierda().getColumna() + " ;\n" ;
+                }
+                
+                if(aux2.getArriba() != null){
+                   // arr += "{ rank=same; " + "nod" +aux2.getFila()+ "" +  aux2.getColumna() + "; " +"nod" +aux2.getArriba().getFila()+ "" +  aux2.getArriba().getColumna() +  "; }\n";
+                    arr += "nod" +aux2.getFila()+ "" +  aux2.getColumna() + " -> nod" + aux2.getArriba().getFila() +
+                            aux2.getArriba().getColumna() + " [dir = both] ; \n" ;
+                }
+                
+                if(aux2.getAbajo() != null){
+                   
+                    aba += "nod" +aux2.getFila()+ "" +  aux2.getColumna() + " -> nod" + aux2.getAbajo().getFila() +
+                            aux2.getAbajo().getColumna() + " ;\n" ;
+                }
+                
+                aux2 = aux2.getDerecha();
+            }
+            
+            rel += "} \n" ;
+            aux = aux.getAbajo();
+            aux2 = aux;
+        }
+ 
+      
+        
+       try{
+            //Abro stream, crea el fichero si no existe
+            FileWriter fw = new FileWriter("matriz.dot");
+            fw.write("digraph g { \n");
+            fw.write("rankdir=LR; \n");
+            fw.write(rel + "\n");   
+            fw.write(der + "\n");
+            fw.write(izq + "\n");
+            fw.write(arr + "\n");
+            fw.write(aba + "\n");
+            fw.write("} \n");
+            //Cierro el stream
+            fw.close(); 
+                //Abro el stream, el fichero debe existir
+            FileReader fr=new FileReader("matriz.dot");
+            //Leemos el fichero y lo mostramos por pantalla
+            int valor=fr.read();
+            while(valor!=-1){
+                System.out.print((char)valor);
+                valor=fr.read();
+            }
+            //Cerramos el stream
+            fr.close();
+            
+            //llamamos graphviz
+            graphviz();
+            
+        }catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
+       
     }
+    
+    private void graphviz(){
+        try {
+
+            String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+            String fileInputPath = "matriz.dot";
+            String fileOutputPath = "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\matriz.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            Runtime rt = Runtime.getRuntime();
+
+            rt.exec(cmd);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        }
+    }
+
+
 }
