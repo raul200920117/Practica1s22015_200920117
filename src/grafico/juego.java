@@ -124,81 +124,199 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                 nodoM aux1, aux2;
                 aux1 = mat.inicial;
                 aux2 = mat.inicial;
-
+                int direccion;
                 aux1 = aux2;
 
                 while (aux2 != null) {
                     while (aux1 != null) {
-                        int direccion = ((int) Math.random() * 100);// mayor a 50 derecha menor izq
+                        // mayor a 2 derecha menor izq
+                        nodoM ayuda, ayuda1;
+                        
                         switch(aux1.getTipo()){
                             
+                            case 2:
+                                direccion = 1;
+                                if(direccion == 0){
+                                    
+                                    if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
+                                    else{
+                                        aux1.setDirec(1);
+                                        ayuda = null;
+                                    }
+                                    
+                                    if(ayuda != null && ayuda.getTipo() == 0 && ayuda.getValor() == 0){//nodo vacio
+                                        ayuda.setNombre(aux1.getNombre());
+                                        ayuda.setTipo(aux1.getTipo());
+                                        ayuda.setRuta(aux1.getRuta());
+                                        ayuda.setValor(1);
+                                        aux1.setValor(0);
+                                        aux1.setRuta("/imagenes/fondo.png");
+                                        aux1.setTipo(0);
+                                        aux1.setName("");
+                                    }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
+                                        vidas--;
+                                        aux1.setValor(0);
+                                        aux1.setRuta("/imagenes/fondo.png");
+                                        aux1.setTipo(0);
+                                        aux1.setName("");
+                                    }else{//cualquier otro se va a al otro lado
+                                        
+                                        if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
+                                        else ayuda1=null;
+                                        
+                                        if(ayuda1 != null){
+                                            ayuda1.setNombre(aux1.getNombre());
+                                            ayuda1.setTipo(aux1.getTipo());
+                                            ayuda1.setRuta(aux1.getRuta());
+                                            ayuda1.setValor(1);
+                                            aux1.setValor(0);
+                                            aux1.setRuta("/imagenes/fondo.png");
+                                            aux1.setTipo(0);
+                                            aux1.setName("");
+                                        }
+                                        
+                                    }
+                                    
+                                }else{//cuando tenga 1
+                                    
+                                    if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
+                                    else{
+                                        aux1.setDirec(0);
+                                        ayuda1 = null;
+                                    }
+                                    
+                                    if(ayuda1 != null && ayuda1.getTipo() == 0 && ayuda1.getValor() == 0){ //nodo vacio
+                                        ayuda1.setNombre(aux1.getNombre());
+                                        ayuda1.setTipo(aux1.getTipo());
+                                        ayuda1.setRuta(aux1.getRuta());
+                                        ayuda1.setValor(1);
+                                        aux1.setValor(0);
+                                        aux1.setRuta("/imagenes/fondo.png");
+                                        aux1.setTipo(0);
+                                        aux1.setName("");
+                                    }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
+                                        vidas--;
+                                        aux1.setValor(0);
+                                        aux1.setRuta("/imagenes/fondo.png");
+                                        aux1.setTipo(0);
+                                        aux1.setName("");
+                                    }else{// con cualquier otra cosa rebota
+                                        
+                                        if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
+                                        else{
+                                            aux1.setDirec(1);
+                                            ayuda = null;
+                                        }
+                                        
+                                        if(ayuda != null){
+                                            ayuda.setNombre(aux1.getNombre());
+                                            ayuda.setTipo(aux1.getTipo());
+                                            ayuda.setRuta(aux1.getRuta());
+                                            ayuda.setValor(1);
+                                            aux1.setValor(0);
+                                            aux1.setRuta("/imagenes/fondo.png");
+                                            aux1.setTipo(0);
+                                            aux1.setName("");
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                break;
+                                
                             case 3:
-                                if(direccion < 50){
-                                    if(aux1.getDerecha().getTipo() == 0 && aux1.getDerecha().getValor() == 0){
-                                        aux1.getDerecha().setNombre(aux1.getNombre());
-                                        aux1.getDerecha().setTipo(aux1.getTipo());
-                                        aux1.getDerecha().setRuta(aux1.getRuta());
-                                        aux1.getDerecha().setValor(1);
+                                 direccion = 1;
+                                if(direccion == 0){
+                                    
+                                    if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
+                                    else{
+                                        aux1.setDirec(1);
+                                        ayuda = null;
+                                    }
+                                    
+                                    if(ayuda != null && ayuda.getTipo() == 0 && ayuda.getValor() == 0){//nodo vacio
+                                        ayuda.setNombre(aux1.getNombre());
+                                        ayuda.setTipo(aux1.getTipo());
+                                        ayuda.setRuta(aux1.getRuta());
+                                        ayuda.setValor(1);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setName("");
-                                    }else if(aux1.getDerecha().getTipo() == 6){
+                                    }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
                                         vidas--;
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setName("");
-                                    }else{
-                                        aux1.getIzquierda().setNombre(aux1.getNombre());
-                                        aux1.getIzquierda().setTipo(aux1.getTipo());
-                                        aux1.getIzquierda().setRuta(aux1.getRuta());
-                                        aux1.getIzquierda().setValor(1);
-                                        aux1.setValor(0);
-                                        aux1.setRuta("/imagenes/fondo.png");
-                                        aux1.setTipo(0);
-                                        aux1.setName("");
+                                    }else{//cualquier otro se va a al otro lado
+                                        
+                                        if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
+                                        else{
+                                            aux1.setDirec(0);
+                                            ayuda1 = null;
+                                        }
+                                        
+                                        if(ayuda1 != null){
+                                            ayuda1.setNombre(aux1.getNombre());
+                                            ayuda1.setTipo(aux1.getTipo());
+                                            ayuda1.setRuta(aux1.getRuta());
+                                            ayuda1.setValor(1);
+                                            aux1.setValor(0);
+                                            aux1.setRuta("/imagenes/fondo.png");
+                                            aux1.setTipo(0);
+                                            aux1.setName("");
+                                        }
+                                        
                                     }
                                     
-                                }else{
+                                }else{//si es 1 para la izquierda
                                     
-                                    if(aux1.getIzquierda().getTipo() == 7){
-                                        aux1.getDerecha().setNombre(aux1.getNombre());
-                                        aux1.getDerecha().setTipo(aux1.getTipo());
-                                        aux1.getDerecha().setRuta(aux1.getRuta());
-                                        aux1.getDerecha().setValor(1);
+                                    if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
+                                    else{
+                                        aux1.setDirec(0);
+                                        ayuda1 = null;
+                                    }
+                                    
+                                    if(ayuda1 != null && ayuda1.getTipo() == 0 && ayuda1.getValor() == 0){ //nodo vacio
+                                        ayuda1.setNombre(aux1.getNombre());
+                                        ayuda1.setTipo(aux1.getTipo());
+                                        ayuda1.setRuta(aux1.getRuta());
+                                        ayuda1.setValor(1);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setName("");
-                                    }else if(aux1.getIzquierda().getTipo() == 6){
+                                    }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
                                         vidas--;
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setName("");
-                                    }else{
-                                        aux1.getDerecha().setNombre(aux1.getNombre());
-                                        aux1.getDerecha().setTipo(aux1.getTipo());
-                                        aux1.getDerecha().setRuta(aux1.getRuta());
-                                        aux1.getDerecha().setValor(1);
-                                        aux1.setValor(0);
-                                        aux1.setRuta("/imagenes/fondo.png");
-                                        aux1.setTipo(0);
-                                        aux1.setName("");
+                                    }else{// con cualquier otra cosa rebota
+                                        
+                                        if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
+                                        else{
+                                            aux1.setDirec(1);
+                                            ayuda = null;
+                                        }
+                                        
+                                        if(ayuda != null){
+                                            ayuda.setNombre(aux1.getNombre());
+                                            ayuda.setTipo(aux1.getTipo());
+                                            ayuda.setRuta(aux1.getRuta());
+                                            ayuda.setValor(1);
+                                            aux1.setValor(0);
+                                            aux1.setRuta("/imagenes/fondo.png");
+                                            aux1.setTipo(0);
+                                            aux1.setName("");
+                                        }
+
                                     }
                                 }
                                 
                                 break;
                                 
-                            case 4:
-                                if(direccion < 50){
-                                    
-                                }else{
-                                    
-                                }
-                                
-                                break;
                             default:
                                 break;
                                 
@@ -211,8 +329,10 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                     aux1 = aux2;
                 }
                 
+                dibujar_matriz();
+                
                 try {
-                    Thread.sleep(600);
+                    Thread.sleep(1500);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(juego.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -339,7 +459,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
             aux2 = aux2.getAbajo();
             aux1 = aux2;
         }
-        jPanel2.repaint();
+       // jPanel2.repaint();
     }
     
     
@@ -411,6 +531,11 @@ public class juego extends javax.swing.JFrame implements KeyListener {
         jButton11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 0, 0));
         jButton11.setText("Graficar");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -545,6 +670,13 @@ public class juego extends javax.swing.JFrame implements KeyListener {
         reinicio();
     }//GEN-LAST:event_jButton12MouseClicked
 
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        
+        Graficas gaf = new Graficas();
+        gaf.recibe(mat);
+        gaf.show();
+    }//GEN-LAST:event_jButton11MouseClicked
+
     private void reinicio(){
         jPanel2.removeAll();
         recibeDatos(jugar);
@@ -581,24 +713,26 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                     if(dir == 1){
                         mov.setNombre(mario.getNombre());
                         mov.setTipo(mario.getTipo());
-                        mov.setRuta(mario.getRuta());
+                        mov.setRuta("/imagenes/marioIzq.gif");
                         mov.setValor(1);
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getIzquierda();
+                     
                         dibujar_matriz();
                     }else if(dir == 2){
                         mov.setNombre(mario.getNombre());
                         mov.setTipo(mario.getTipo());
-                        mov.setRuta(mario.getRuta());
+                        mov.setRuta("/imagenes/mario.gif");
                         mov.setValor(1);
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getDerecha();
+                   
                         dibujar_matriz();
                     }else if(dir == 3){
                         mov.setNombre(mario.getNombre());
@@ -610,6 +744,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getArriba();
+              
                         dibujar_matriz();
                     }else if(dir == 4){
                         mov.setNombre(mario.getNombre());
@@ -621,6 +756,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getAbajo();
+                      
                         dibujar_matriz();
                     }
                 }
@@ -645,6 +781,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getIzquierda();
+                        
                         dibujar_matriz();
                     }else if(dir == 2){
                         mov.setNombre(mario.getNombre());
@@ -656,6 +793,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getDerecha();
+                     
                         dibujar_matriz();
                     }else if(dir == 3){
                         mov.setNombre(mario.getNombre());
@@ -667,6 +805,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getArriba();
+                      
                         dibujar_matriz();
                     }else if(dir == 4){
                         mov.setNombre(mario.getNombre());
@@ -678,6 +817,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setTipo(0);
                         mario.setName("");
                         mario = mario.getAbajo();
+                      
                         dibujar_matriz();
                     }
                 }

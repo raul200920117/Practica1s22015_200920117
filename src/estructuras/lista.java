@@ -5,6 +5,10 @@
  */
 package estructuras;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Raulk
@@ -93,6 +97,47 @@ public class lista {
         return null;        
     }
     
+    public void eliminar(int i){
+        
+        listaNodo aux;
+        aux = inicial;
+        
+       
+        
+        while(aux != null)
+        {
+            if(aux.getCorrelativo() == i ){
+                 
+                if(aux.getAnterior() != null && aux.getSiguiente() != null){
+                    
+                    aux.getAnterior().setSiguiente( aux.getSiguiente());
+                    aux.getSiguiente().setAnterior( aux.getAnterior() );
+                    
+                    
+                }else if(aux.getAnterior() != null){
+                    
+                    if(aux == ultimo)  ultimo = aux;
+                    
+                    aux.getAnterior().setSiguiente( null);
+                                        
+                }else if(aux.getSiguiente() != null){
+                    
+                    if(aux == inicial)  inicial = aux.getSiguiente();
+                    
+                    aux.getSiguiente().setAnterior( null );
+                }else{
+                    
+                    if(inicial == ultimo)  inicial = ultimo = null;
+                    
+                }
+                
+            }    
+            
+            aux = aux.getSiguiente();
+        }
+        
+    }
+    
     public void mostrar(){
         listaNodo aux;
         aux = inicial;
@@ -104,6 +149,88 @@ public class lista {
             
             System.out.println(aux.getNombre() + "  ");
             aux = aux.getSiguiente();
+        }
+    }
+    
+    public void graficar(){
+        
+        listaNodo aux;
+        aux = inicial;
+        String rel = "";
+        String der = "";
+        String izq = "";
+        
+        while (aux != null) {
+            
+                rel += "nod" + aux.getCorrelativo() + " [shape=record , label= \" { nombre : " + aux.getNombre() +
+                         " |  posicion: " + "" +aux.getCorrelativo() + " } | { tipo: " + aux.getTipo()+ " }  \"] ; \n" ;             
+               
+                if(aux.getSiguiente() != null){
+                    der += "nod" +aux.getCorrelativo() + " -> nod" + aux.getSiguiente().getCorrelativo() + ";\n" ;
+                }
+                
+                if(aux.getAnterior() != null){
+                    izq += "nod" +aux.getCorrelativo() +  " -> nod" + aux.getAnterior().getCorrelativo() + " ;\n" ;
+                }
+
+            System.out.println(aux.getNombre() + "  ");
+            aux = aux.getSiguiente();
+        }
+        
+         try{
+            //Abro stream, crea el fichero si no existe
+            FileWriter fw = new FileWriter("lista.dot");
+            fw.write("digraph g { \n");
+          
+            fw.write(rel + "\n");   
+            fw.write(der + "\n");
+            fw.write(izq + "\n");
+
+            fw.write("} \n");
+            //Cierro el stream
+            fw.close(); 
+                //Abro el stream, el fichero debe existir
+            FileReader fr=new FileReader("lista.dot");
+            //Leemos el fichero y lo mostramos por pantalla
+            int valor=fr.read();
+            while(valor!=-1){
+                System.out.print((char)valor);
+                valor=fr.read();
+            }
+            //Cerramos el stream
+            fr.close();
+            
+            //llamamos graphviz
+            graphviz();
+            
+        }catch(IOException e){
+            System.out.println("Error E/S: "+e);
+        }
+    }
+    
+    private void graphviz(){
+     
+        try {
+
+            String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+            String fileInputPath = "lista.dot";
+            String fileOutputPath = "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\lista.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            Runtime rt = Runtime.getRuntime();
+
+            rt.exec(cmd);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
         }
     }
 }

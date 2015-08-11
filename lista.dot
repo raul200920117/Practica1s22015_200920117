@@ -1,0 +1,24 @@
+digraph g { 
+nod2 [shape=record , label= " { nombre : enemigo goomba |  posicion: 2 } | { tipo: 2 }  "] ; 
+nod3 [shape=record , label= " { nombre : enemigo koopa |  posicion: 3 } | { tipo: 3 }  "] ; 
+nod4 [shape=record , label= " { nombre : ficha |  posicion: 4 } | { tipo: 4 }  "] ; 
+nod5 [shape=record , label= " { nombre : personaje |  posicion: 5 } | { tipo: 6 }  "] ; 
+nod6 [shape=record , label= " { nombre : castillo final |  posicion: 6 } | { tipo: 7 }  "] ; 
+nod7 [shape=record , label= " { nombre : suelo |  posicion: 7 } | { tipo: 0 }  "] ; 
+nod8 [shape=record , label= " { nombre : pared |  posicion: 8 } | { tipo: 1 }  "] ; 
+
+nod2 -> nod3;
+nod3 -> nod4;
+nod4 -> nod5;
+nod5 -> nod6;
+nod6 -> nod7;
+nod7 -> nod8;
+
+nod3 -> nod2 ;
+nod4 -> nod3 ;
+nod5 -> nod4 ;
+nod6 -> nod5 ;
+nod7 -> nod6 ;
+nod8 -> nod7 ;
+
+} 

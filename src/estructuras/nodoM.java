@@ -19,6 +19,7 @@ public class nodoM extends JLabel {
         this.tipo = 0;
         this.ruta =ruta;
         this.nombre = nombre;
+        this.direc = 0;// cero para derecha 1 para izquierda
         this.izquierda = null;
         this.derecha = null;
         this.abajo = null;
@@ -30,6 +31,7 @@ public class nodoM extends JLabel {
     private int columna;
     private int valor;// si esta cupado es 1 y si esta vacio es 0
     private int tipo;
+    private int direc;//para los goobas y tortugas
     private String ruta;
     private String nombre;
     private nodoM arriba;
@@ -175,5 +177,19 @@ public class nodoM extends JLabel {
      */
     public void setRuta(String ruta) {
         this.ruta = ruta;
+    }
+
+    /**
+     * @return the direc
+     */
+    public int getDirec() {
+        return direc;
+    }
+
+    /**
+     * @param direc the direc to set
+     */
+    public void setDirec(int direc) {
+        this.direc = direc;
     }
 }

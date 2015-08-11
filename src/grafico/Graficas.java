@@ -5,7 +5,9 @@
  */
 package grafico;
 
+import estructuras.matriz;
 import java.awt.Image;
+import java.io.IOException;
 import java.net.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -19,21 +21,39 @@ public class Graficas extends javax.swing.JFrame {
     /**
      * Creates new form Graficas
      */
+    
+    matriz mat;
+    boolean bo;
     public Graficas() {
+        mat = new matriz();
+        bo = true;
         initComponents();
     }
     
     public void regraficar(){
-//        URL url = this.getClass().getResource("/imagenes/matriz.jpg");
-//        ImageIcon icon = new ImageIcon(url);
-//        Icon icono = new ImageIcon(icon.getImage());
-//        jLabel2.setIcon(icono);
-//        jScrollPane1.removeAll();
-//        jScrollPane1.add(jLabel2);
-//        jScrollPane1.setHorizontalScrollBarPolicy(ALWAYS);
-//        jScrollPane1.setVerticalScrollBarPolicy(ALWAYS);
-//        jScrollPane1.repaint();
-        
+       mat.graficar();
+       
+       if(bo){
+           jLabel3.setIcon(new ImageIcon( getClass().getResource( "/imagenes/mario.gif" )));
+           
+           bo = false;
+       }else{
+           jLabel3.setIcon(new ImageIcon( getClass().getResource( "/imagenes/matriz.jpg")));
+           bo = true;
+       }
+       
+        try {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\matriz.jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       
+           
+    }
+    
+    public void recibe(matriz mat){
+        this.mat = mat;
+        this.mat.graficar();
     }
 
     /**
@@ -45,20 +65,21 @@ public class Graficas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/matriz.jpg"))); // NOI18N
-        jScrollPane1.setViewportView(jLabel2);
-
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         jLabel1.setText("Matriz  ortogonal");
+
+        jButton1.setText("Actualizar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,25 +88,35 @@ public class Graficas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(110, 110, 110)
+                        .addComponent(jButton1)
+                        .addGap(366, 366, 366)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(290, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        regraficar();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -123,8 +154,8 @@ public class Graficas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
