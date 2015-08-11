@@ -225,7 +225,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                 break;
                                 
                             case 3:
-                                 direccion = 1;
+                                direccion = 1;
                                 if(direccion == 0){
                                     
                                     if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -304,10 +304,10 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         if(ayuda != null){
                                             ayuda.setNombre(aux1.getNombre());
                                             ayuda.setTipo(aux1.getTipo());
-                                            ayuda.setRuta(aux1.getRuta());
+                                            ayuda.setRuta("/imagenes/koopaDer.gif");
                                             ayuda.setValor(1);
                                             aux1.setValor(0);
-                                            aux1.setRuta("/imagenes/fondo.png");
+                                            aux1.setRuta("/imagenes/koopaDer.gif");
                                             aux1.setTipo(0);
                                             aux1.setName("");
                                         }
