@@ -19,7 +19,7 @@ public class nodoM extends JLabel {
         this.tipo = 0;
         this.ruta =ruta;
         this.nombre = nombre;
-        this.direc = 0;// cero para derecha 1 para izquierda
+        this.direc = 1;// cero para derecha 1 para izquierda
         this.izquierda = null;
         this.derecha = null;
         this.abajo = null;

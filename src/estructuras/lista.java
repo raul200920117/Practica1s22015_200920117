@@ -162,15 +162,15 @@ public class lista {
         
         while (aux != null) {
             
-                rel += "nod" + aux.getCorrelativo() + " [shape=record , label= \" { nombre : " + aux.getNombre() +
+                rel += "nod" + aux.getCorrelativo() + " [shape=record ,color=\"cyan\", label= \" { nombre : " + aux.getNombre() +
                          " |  posicion: " + "" +aux.getCorrelativo() + " } | { tipo: " + aux.getTipo()+ " }  \"] ; \n" ;             
                
                 if(aux.getSiguiente() != null){
-                    der += "nod" +aux.getCorrelativo() + " -> nod" + aux.getSiguiente().getCorrelativo() + ";\n" ;
+                    der += "nod" +aux.getCorrelativo() + " -> nod" + aux.getSiguiente().getCorrelativo() + " [color = indigo] ;\n" ;
                 }
                 
                 if(aux.getAnterior() != null){
-                    izq += "nod" +aux.getCorrelativo() +  " -> nod" + aux.getAnterior().getCorrelativo() + " ;\n" ;
+                    izq += "nod" +aux.getCorrelativo() +  " -> nod" + aux.getAnterior().getCorrelativo() + " [color = red] ;\n" ;
                 }
 
             System.out.println(aux.getNombre() + "  ");

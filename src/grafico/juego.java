@@ -80,7 +80,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("");
                         mario = mario.getAbajo();
                         puntos+=100;
                         jLabel9.setText("" + puntos);
@@ -94,7 +94,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                     mario.setValor(0);
                     mario.setRuta("/imagenes/fondo.png");
                     mario.setTipo(0);
-                    mario.setName("");
+                    mario.setNombre("");
                     mario = mario.getAbajo();
                     dibujar_matriz();
                 }
@@ -125,7 +125,6 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                 aux1 = mat.inicial;
                 aux2 = mat.inicial;
                 int direccion;
-                aux1 = aux2;
 
                 while (aux2 != null) {
                     while (aux1 != null) {
@@ -135,7 +134,9 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         switch(aux1.getTipo()){
                             
                             case 2:
-                                direccion = 1;
+                                
+                                
+                                direccion = aux1.getDirec();
                                 if(direccion == 0){
                                     
                                     if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -149,16 +150,21 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         ayuda.setTipo(aux1.getTipo());
                                         ayuda.setRuta(aux1.getRuta());
                                         ayuda.setValor(1);
+                                        ayuda.setDirec(0);
+                                        aux1.setDirec(1);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
+                                        aux1= aux1.getDerecha();
                                     }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
                                         vidas--;
+                                        jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setDirec(1);
+                                        aux1.setNombre("");
                                     }else{//cualquier otro se va a al otro lado
                                         
                                         if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
@@ -172,7 +178,8 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setName("");
+                                            aux1.setNombre("");
+                                            
                                         }
                                         
                                     }
@@ -193,13 +200,14 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
                                     }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
                                         vidas--;
+                                        jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
                                     }else{// con cualquier otra cosa rebota
                                         
                                         if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -213,10 +221,13 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             ayuda.setTipo(aux1.getTipo());
                                             ayuda.setRuta(aux1.getRuta());
                                             ayuda.setValor(1);
+                                            ayuda.setDirec(0);
+                                            aux1.setDirec(1);
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setName("");
+                                            aux1.setNombre("");
+                                            aux1= aux1.getDerecha();
                                         }
                                         
                                     }
@@ -225,7 +236,9 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                 break;
                                 
                             case 3:
-                                direccion = 1;
+                                
+                                                                
+                                direccion = aux1.getDirec();
                                 if(direccion == 0){
                                     
                                     if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -239,38 +252,41 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         ayuda.setTipo(aux1.getTipo());
                                         ayuda.setRuta(aux1.getRuta());
                                         ayuda.setValor(1);
+                                        ayuda.setDirec(0);
+                                        aux1.setDirec(1);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
+                                        aux1= aux1.getDerecha();
                                     }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
                                         vidas--;
+                                        jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setDirec(1);
+                                        aux1.setNombre("");
                                     }else{//cualquier otro se va a al otro lado
                                         
                                         if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
-                                        else{
-                                            aux1.setDirec(0);
-                                            ayuda1 = null;
-                                        }
+                                        else ayuda1=null;
                                         
                                         if(ayuda1 != null){
                                             ayuda1.setNombre(aux1.getNombre());
                                             ayuda1.setTipo(aux1.getTipo());
-                                            ayuda1.setRuta(aux1.getRuta());
+                                            ayuda1.setRuta("/imagenes/koopa.gif");
                                             ayuda1.setValor(1);
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setName("");
+                                            aux1.setNombre("");
+                                            
                                         }
                                         
                                     }
                                     
-                                }else{//si es 1 para la izquierda
+                                }else{//cuando tenga 1
                                     
                                     if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
                                     else{
@@ -286,13 +302,14 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
                                     }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
                                         vidas--;
+                                        jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setName("");
+                                        aux1.setNombre("");
                                     }else{// con cualquier otra cosa rebota
                                         
                                         if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -306,12 +323,15 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             ayuda.setTipo(aux1.getTipo());
                                             ayuda.setRuta("/imagenes/koopaDer.gif");
                                             ayuda.setValor(1);
+                                            ayuda.setDirec(0);
+                                            aux1.setDirec(1);
                                             aux1.setValor(0);
-                                            aux1.setRuta("/imagenes/koopaDer.gif");
+                                            aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setName("");
+                                            aux1.setNombre("");
+                                            aux1= aux1.getDerecha();
                                         }
-
+                                        
                                     }
                                 }
                                 
@@ -660,9 +680,9 @@ public class juego extends javax.swing.JFrame implements KeyListener {
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
         sonido.stop();
-        grav.para = false;
-        hil.para = false;
-        movE.para = false;
+        grav.stop();
+        hil.stop();
+        movE.stop();
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked

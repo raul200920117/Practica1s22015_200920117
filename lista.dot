@@ -1,15 +1,24 @@
 digraph g { 
-nod1 [shape=record , label= " { nombre : enemigo koopa |  posicion: 1 } | { tipo: 3 }  "] ; 
-nod2 [shape=record , label= " { nombre : enemigo goomba |  posicion: 2 } | { tipo: 2 }  "] ; 
-nod3 [shape=record , label= " { nombre : personaje |  posicion: 3 } | { tipo: 6 }  "] ; 
-nod4 [shape=record , label= " { nombre : castillo final |  posicion: 4 } | { tipo: 7 }  "] ; 
+nod1 [shape=record ,color="cyan", label= " { nombre : hongo de vida |  posicion: 1 } | { tipo: 5 }  "] ; 
+nod2 [shape=record ,color="cyan", label= " { nombre : hongo de vida |  posicion: 2 } | { tipo: 5 }  "] ; 
+nod3 [shape=record ,color="cyan", label= " { nombre : enemigo goomba |  posicion: 3 } | { tipo: 2 }  "] ; 
+nod4 [shape=record ,color="cyan", label= " { nombre : enemigo goomba |  posicion: 4 } | { tipo: 2 }  "] ; 
+nod5 [shape=record ,color="cyan", label= " { nombre : enemigo goomba |  posicion: 5 } | { tipo: 2 }  "] ; 
+nod6 [shape=record ,color="cyan", label= " { nombre : enemigo goomba |  posicion: 6 } | { tipo: 2 }  "] ; 
+nod7 [shape=record ,color="cyan", label= " { nombre : enemigo goomba |  posicion: 7 } | { tipo: 2 }  "] ; 
 
-nod1 -> nod2;
-nod2 -> nod3;
-nod3 -> nod4;
+nod1 -> nod2 [color = indigo] ;
+nod2 -> nod3 [color = indigo] ;
+nod3 -> nod4 [color = indigo] ;
+nod4 -> nod5 [color = indigo] ;
+nod5 -> nod6 [color = indigo] ;
+nod6 -> nod7 [color = indigo] ;
 
-nod2 -> nod1 ;
-nod3 -> nod2 ;
-nod4 -> nod3 ;
+nod2 -> nod1 [color = red] ;
+nod3 -> nod2 [color = red] ;
+nod4 -> nod3 [color = red] ;
+nod5 -> nod4 [color = red] ;
+nod6 -> nod5 [color = red] ;
+nod7 -> nod6 [color = red] ;
 
 } 
