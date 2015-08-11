@@ -360,7 +360,7 @@ public class matriz {
 
             String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
             String fileInputPath = "matriz.dot";
-            String fileOutputPath = "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\matriz.jpg";
+            String fileOutputPath = "D:\\matriz.jpg";
             String tParam = "-Tjpg";
             String tOParam = "-o";
 

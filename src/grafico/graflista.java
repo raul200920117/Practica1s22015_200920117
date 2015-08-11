@@ -47,6 +47,7 @@ public class graflista extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 255, 204));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -94,7 +95,7 @@ public class graflista extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,20 +124,24 @@ public class graflista extends javax.swing.JFrame {
 //                ImageIcon icon = new ImageIcon(url);
 //                Icon icono = new ImageIcon(icon.getImage());
 //                jLabel2.setIcon(icono);
-        
+        this.list.graficar();
         if(bo){
             bo = false;
-            jLabel2.setIcon(new ImageIcon( getClass().getResource( "/imagenes/lista.jpg" )));
+//            jLabel2.updateUI();
+//            jLabel2.removeAll();
+            jLabel2.setIcon(new ImageIcon("D:\\lista.jpg"));
+
+            try {
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "D:\\lista.jpg");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
         }else{
             bo = true;
             jLabel2.setIcon(new ImageIcon( getClass().getResource( "/imagenes/mario-walk.gif" )));
         }
         
-        try {
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\lista.jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
        
     }
     

@@ -73,28 +73,31 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                     if(mario.getAbajo().getTipo() == 0 || mario.getAbajo().getTipo()==1){
                         //no se mueve ni nada
                     }else if (mario.getAbajo().getTipo() == 2){
-                        mario.getAbajo().setNombre(mario.getNombre());
-                        mario.getAbajo().setTipo(mario.getTipo());
-                        mario.getAbajo().setRuta(mario.getRuta());
-                        mario.getAbajo().setValor(1);
+                        nodoM mario1 = mario.getAbajo();
+                        mario1.setNombre(mario.getNombre());
+                        mario1.setTipo(mario.getTipo());
+                        mario1.setRuta(mario.getRuta());
+                        mario1.setValor(1);
+                        
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setNombre("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                         puntos+=100;
                         jLabel9.setText("" + puntos);
                         dibujar_matriz();
                     }
                 }else{//si no hay datos en el nodo
-                    mario.getAbajo().setNombre(mario.getNombre());
-                    mario.getAbajo().setTipo(mario.getTipo());
-                    mario.getAbajo().setRuta(mario.getRuta());
-                    mario.getAbajo().setValor(1);
+                    nodoM mario1 = mario.getAbajo();
+                    mario1.setNombre(mario.getNombre());
+                    mario1.setTipo(mario.getTipo());
+                    mario1.setRuta(mario.getRuta());
+                    mario1.setValor(1);
                     mario.setValor(0);
                     mario.setRuta("/imagenes/fondo.png");
                     mario.setTipo(0);
-                    mario.setNombre("");
+                    mario.setNombre("vacio");
                     mario = mario.getAbajo();
                     dibujar_matriz();
                 }
@@ -155,7 +158,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                         aux1= aux1.getDerecha();
                                     }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
                                         vidas--;
@@ -164,7 +167,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setDirec(1);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else{//cualquier otro se va a al otro lado
                                         
                                         if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
@@ -178,7 +181,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setNombre("");
+                                            aux1.setNombre("vacio");
                                             
                                         }
                                         
@@ -200,14 +203,14 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
                                         vidas--;
                                         jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else{// con cualquier otra cosa rebota
                                         
                                         if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -226,7 +229,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setNombre("");
+                                            aux1.setNombre("vacio");
                                             aux1= aux1.getDerecha();
                                         }
                                         
@@ -257,7 +260,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                         aux1= aux1.getDerecha();
                                     }else if(ayuda != null && ayuda.getTipo() == 6){//choca con el personaje
                                         vidas--;
@@ -266,7 +269,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
                                         aux1.setDirec(1);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else{//cualquier otro se va a al otro lado
                                         
                                         if (aux1.getIzquierda() != null)  ayuda1 = aux1.getIzquierda();
@@ -280,7 +283,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setNombre("");
+                                            aux1.setNombre("vacio");
                                             
                                         }
                                         
@@ -302,14 +305,14 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else if(ayuda1 != null && aux1.getIzquierda().getTipo() == 6){//choca con el personaje
                                         vidas--;
                                         jLabel11.setText("" + vidas);
                                         aux1.setValor(0);
                                         aux1.setRuta("/imagenes/fondo.png");
                                         aux1.setTipo(0);
-                                        aux1.setNombre("");
+                                        aux1.setNombre("vacio");
                                     }else{// con cualquier otra cosa rebota
                                         
                                         if (aux1.getDerecha() != null)  ayuda = aux1.getDerecha();
@@ -328,7 +331,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                                             aux1.setValor(0);
                                             aux1.setRuta("/imagenes/fondo.png");
                                             aux1.setTipo(0);
-                                            aux1.setNombre("");
+                                            aux1.setNombre("vacio");
                                             aux1= aux1.getDerecha();
                                         }
                                         
@@ -738,7 +741,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getIzquierda();
                      
                         dibujar_matriz();
@@ -750,7 +753,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getDerecha();
                    
                         dibujar_matriz();
@@ -762,7 +765,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getArriba();
               
                         dibujar_matriz();
@@ -774,7 +777,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                       
                         dibujar_matriz();
@@ -784,6 +787,22 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                 //si el nodo no esta vacio no puede moverse para ningun lado
                 break;
             case 1://pared
+                
+                
+                if(dir == 3){
+                    puntos+=50;
+                    jLabel9.setText("" + puntos);
+                    mov.setNombre(mario.getNombre());
+                    mov.setTipo(mario.getTipo());
+                    mov.setRuta(mario.getRuta());
+                    mov.setValor(1);
+                    mario.setValor(0);
+                    mario.setRuta("/imagenes/fondo.png");
+                    mario.setTipo(0);
+                    mario.setNombre("vacio");
+                    mario = mario.getArriba();
+                    dibujar_matriz();
+                }
                 
                 break;
             case 2://goomba
@@ -799,7 +818,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getIzquierda();
                         
                         dibujar_matriz();
@@ -811,7 +830,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getDerecha();
                      
                         dibujar_matriz();
@@ -823,7 +842,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getArriba();
                       
                         dibujar_matriz();
@@ -835,7 +854,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                       
                         dibujar_matriz();
@@ -843,7 +862,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                 }
                 
                 break;
-            case 3://koopa pierde si se toca
+            case 3://koopa pierde una vida si se toca
                 vidas--;
                 jLabel11.setText(""+ vidas);
                 
@@ -855,7 +874,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getIzquierda();
                         dibujar_matriz();
                     }else if(dir == 2){
@@ -866,7 +885,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getDerecha();
                         dibujar_matriz();
                     }else if(dir == 3){
@@ -877,7 +896,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getArriba();
                         dibujar_matriz();
                     }else if(dir == 4){
@@ -888,7 +907,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                         dibujar_matriz();
                     }
@@ -905,7 +924,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getIzquierda();
                         dibujar_matriz();
                     }else if(dir == 2){
@@ -916,7 +935,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getDerecha();
                         dibujar_matriz();
                     }else if(dir == 3){
@@ -927,7 +946,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getArriba();
                         dibujar_matriz();
                     }else if(dir == 4){
@@ -938,7 +957,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                         dibujar_matriz();
                     }
@@ -955,7 +974,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getIzquierda();
                         dibujar_matriz();
                     }else if(dir == 2){
@@ -966,7 +985,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getDerecha();
                         dibujar_matriz();
                     }else if(dir == 3){
@@ -977,7 +996,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getArriba();
                         dibujar_matriz();
                     }else if(dir == 4){
@@ -988,7 +1007,7 @@ public class juego extends javax.swing.JFrame implements KeyListener {
                         mario.setValor(0);
                         mario.setRuta("/imagenes/fondo.png");
                         mario.setTipo(0);
-                        mario.setName("");
+                        mario.setNombre("vacio");
                         mario = mario.getAbajo();
                         dibujar_matriz();
                     }

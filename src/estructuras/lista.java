@@ -214,7 +214,8 @@ public class lista {
 
             String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
             String fileInputPath = "lista.dot";
-            String fileOutputPath = "C:\\Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\lista.jpg";
+            String fileOutputPath = "D:\\lista.jpg";
+            //Users\\Raulk\\Documents\\NetBeansProjects\\practica1\\src\\imagenes\\lista.jpg
             String tParam = "-Tjpg";
             String tOParam = "-o";
 
